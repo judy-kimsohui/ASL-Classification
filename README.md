@@ -1,3 +1,17 @@
+---
+title: ASL Classification
+emoji: 🚀
+colorFrom: red
+colorTo: red
+sdk: docker
+app_port: 8501
+tags:
+- streamlit
+pinned: false
+short_description: Streamlit template space
+---
+
+
 # ASL Classification (Streamlit Demo)
 
 This is an interactive ASL (American Sign Language) classifier demo built with PyTorch and Streamlit.
