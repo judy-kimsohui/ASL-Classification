@@ -11,6 +11,8 @@ import matplotlib.pyplot as plt
 # 페이지 설정
 st.set_page_config(page_title="ASL 수화 분류기", layout="wide")
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 # 스타일 설정
 st.markdown("""
     <style>
@@ -74,7 +76,6 @@ def load_model():
     # notebook에서도 device = 'cuda' if ... 이런 식이라 그대로 맞춤
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     model = ASLClassifier().to(device)
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     model_path = os.path.join(BASE_DIR, "model", "best_nnLinear_model.pth")
     
     if os.path.exists(model_path):
@@ -145,7 +146,7 @@ with col1:
     input_image = None
     
     if option == "샘플 이미지":
-        sample_dir = "./data/asl_image/"
+        sample_dir = os.path.join(BASE_DIR, "data", "asl_image")
         if os.path.exists(sample_dir):
             sample_files = [f for f in os.listdir(sample_dir) if f.lower().endswith(('.png', '.jpg', '.jpeg'))]
             selected_sample = st.selectbox("샘플 이미지를 선택하세요:", sample_files)
