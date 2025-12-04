@@ -74,7 +74,8 @@ def load_model():
     # notebook에서도 device = 'cuda' if ... 이런 식이라 그대로 맞춤
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     model = ASLClassifier().to(device)
-    model_path = './model/best_nnLinear_model.pth'
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    model_path = os.path.join(BASE_DIR, "model", "best_nnLinear_model.pth")
     
     if os.path.exists(model_path):
         try:

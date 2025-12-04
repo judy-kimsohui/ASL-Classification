@@ -7,8 +7,10 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
+COPY src /app
 COPY requirements.txt /app/
-COPY src /app/src
+COPY model /app/model
+
 
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
